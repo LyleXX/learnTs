@@ -9,7 +9,7 @@ const foo2 = function (name: string) {
   return name.length
 }
 
-const foo3: (name: string) => number = function (name: string) {
+const foo3: (name: string) => number = function (name) {
   return name.length
 }
 
@@ -20,7 +20,7 @@ const foo4 = (name: string): number => {
 
 const foo5: (name: string) => number = (name) => {
   return name.length
-}  // 不建议使用
+}  // 函数类型声明混合箭头函数声明时，代码的可读性会非常差，不建议使用
 
 // 箭头函数使用最好用类型别名将函数声明抽离出来
 type FuncFoo = (name: string) => number
@@ -66,7 +66,7 @@ function foo13(name: string, age: number = 18): number {
 
 // rest
 function foo14(arg1: string, ...rest: any[]) { }
-foo14('1', 1, 2, 3, 4,)
+foo14('1', 1, 2, 3, 4, '5')
 function foo15(arg1: string, ...rest: [number, boolean]) { }
 foo15('1', 2, true)
 foo15('1', 2, true, 3)
@@ -140,6 +140,7 @@ class Foo {
 }
 
 const classFoo = new Foo('2')
+const classFoo2 = new Foo(2)
 const try1 = classFoo.try(599)
 const try2 = classFoo.try(599, true)
 const try3 = classFoo.try(599, false)
@@ -158,6 +159,7 @@ const Foo2 = class {
 
   // ...
 }
+const classFoo3 = new Foo2('1')
 
 // 修饰符
 // public：此类成员在类、类的实例、子类中都能被访问。
@@ -182,6 +184,9 @@ class Foo4 {
 const try4 = new Foo4('lyle', true)
 console.log(try4.arg1);
 console.log(try4.arg2);
+console.log(
+  Foo4.arg2
+);
 
 
 // 静态成员
@@ -220,6 +225,7 @@ class Derived extends Base {
   override print() {
     // ...
   }
+
   override printWithLove(): void {
 
   }
@@ -234,7 +240,7 @@ abstract class AbsFoo {
 // 使用implements实现抽象类
 // 必须实现抽象类的每一个抽象成员，否则就会报错
 class Foo6 implements AbsFoo {
-  absProp: string = 'lyle'
+  // absProp: string = 'lyle'
   get abstract() {
     return 'lyle'
   }
@@ -262,9 +268,9 @@ class Foo7 implements FooStruct {
 
 // Newable Interface
 class Foo8 { }
-interface FooStruct {
+interface FooStruct2 {
   new(): Foo
 }
 
-declare const NewableFoo: FooStruct
+declare const NewableFoo: FooStruct2
 const foo20 = new NewableFoo()

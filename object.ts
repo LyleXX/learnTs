@@ -12,6 +12,7 @@ const obj1: IDescription = {
 obj1.other = '1'
 obj1.func()
 obj1.func = () => { }
+obj1.func()
 
 interface Test {
   readonly name: string,

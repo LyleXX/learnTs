@@ -43,7 +43,9 @@ if (tmp2.user.vip) {
   console.log(tmp2.user.promotion);
 
 }
-
+if (tmp2.user.vip === false) {
+  console.log(tmp2.user.promotion);
+}
 
 // 类型别名
 type Code = 10000 | 10001 | 50000
