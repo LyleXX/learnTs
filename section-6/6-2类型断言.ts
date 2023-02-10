@@ -65,3 +65,20 @@ interface IStruct626 {
     }
   }
 }
+
+// 使用类型标注会报错
+const obj627: IStruct626 = {}
+
+// 使用类型断言可以再保留类型的前提下，不用完整的实现这个结构
+const obj628 = <IStruct626>{
+  bar: {
+    baz: {}
+  }
+}
+// 此时类型提示仍然存在，错误实现结构时也会给报错信息
+const obj629 = <IStruct626>{
+  bar: {
+    baz: {handle}
+  }
+}
+
