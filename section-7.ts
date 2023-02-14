@@ -140,9 +140,9 @@ const foo7136: AnyTypeHere['lyle'] = 'any value'
 // 索引类型查询，可以将对象中的所有键转换为字面量类型,然后再组合成联合类型。数字类型的键名不会被转换，仍然保持为数字类型字面量
 interface Foo7141 {
   lyle: 1,
-  123: 2
+  599: 2
 }
-type FooKeys = keyof Foo //"lyle" | 599
+type FooKeys = keyof Foo7141 //"lyle" | 599
 // 从键名到联合类型的过程
 // type FooKeys7147 = Object.keys(Foo).join("|")
 
